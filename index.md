@@ -1,6 +1,9 @@
 ---
 layout: single
 author_profile: true
+classes: wide
+header:
+    image: /assets/images/path-banner.jpg
 ---
 
 I am an assistant professor in the [Department of Statistics & Applied Probability](https://www.pstat.ucsb.edu/) at the [University of California, Santa Barbara](https://www.ucsb.edu), and a faculty scientist in [Computational Research Division](https://crd.lbl.gov/departments/data-science-and-technology/data-analytics-and-visualization/) at [Lawrence Berkeley Lab](https://www.lbl.gov). My CV can be viewed [here](/assets/files/CV.pdf).

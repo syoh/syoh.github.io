@@ -12,19 +12,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2      
-    - name: set up ruby
+
+    - name: Checkout source
+      uses: actions/checkout@v2
+
+    - name: Set up ruby
     # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
     # change this to (see https://github.com/ruby/setup-ruby#versioning):
     # uses: ruby/setup-ruby@v1
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
         ruby-version: 2.6
-    - name: install jekyll dependencies
+
+    - name: Install dependencies
       run: bundle install
-    - name: build pages
+
+    - name: Build pages
       run: bundle exec jekyll build
-    - name: deploy github pages
+
+    - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
