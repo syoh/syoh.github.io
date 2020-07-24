@@ -31,5 +31,12 @@ jobs:
       run: bundle install
     - name: Build pages
       run: bundle exec jekyll build
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        pip install ghp-import
     - name: Deploy site
       run: ghp-import -n -p -b master -p _site
