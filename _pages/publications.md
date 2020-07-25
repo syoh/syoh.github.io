@@ -2,6 +2,8 @@
 permalink: /publications/
 title: "Publications"
 layout: single
+header:
+    image: /assets/images/fgm-lr-task.png
 author_profile: true
 toc: true
 years: [2020,2019,2018,2017,2016,2014,2012,2011,2001,2000]
