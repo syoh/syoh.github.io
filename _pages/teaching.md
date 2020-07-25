@@ -4,6 +4,9 @@ permalink: /teaching/
 title: Teaching
 author_profile: true
 toc: true
+header:
+    overlay_image: /assets/images/sunset.jpg
+    overlay_filter: 0.2
 ---
 
 

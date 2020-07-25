@@ -1,9 +1,10 @@
 ---
 permalink: /research/
-title: "Publications"
+title: "Research"
 layout: single
 header:
-    image: /assets/images/fgm-lr-task.png
+    overlay_image: /assets/images/fgm-lr-task.png
+    overlay_filter: 0.3
 author_profile: true
 toc: true
 years: [2020,2019,2018,2017,2016,2014,2012,2011,2001,2000]
@@ -16,6 +17,8 @@ https://gist.github.com/roachhd/ed8da4786ba79dfc4d91
 jekyll defaults
 https://github.com/inukshuk/jekyll-scholar/blob/master/lib/jekyll/scholar/defaults.rb
 -->
+
+## Publications
 
 {% for year in page.years %}
 ## {{year}}
