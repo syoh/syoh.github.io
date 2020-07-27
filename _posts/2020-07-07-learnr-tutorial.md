@@ -6,6 +6,7 @@ gallery:
   image_path: /assets/images/learnr.gif
   alt: "learnr tutorial on Binder"
   title: "learnr tutorial running on Binder"
+tags: [teaching, jupyter, docker, binder, computing]
 ---
 
 Recently, a colleague pointed out that they would like to host R tutorial created with `learnr` package for their students. In this post, I describe a way to host the tutorials that is suitable in a workshop-like setting.

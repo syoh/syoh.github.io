@@ -1,5 +1,6 @@
 ---
 title: HP-CONCORD in FY 2021 Budget Request to Congress
+tags: [research, news]
 ---
 
 In [FY 2021 ASCR budget requests to the Congress](https://www.energy.gov/sites/prod/files/2020/06/f75/fy-2021-sc-ascr-cong-budget.pdf), HP-CONCORD appeared as one of the program accomplishments. This is a part of the full budget request made by the [Office of Science at Department of Energy](https://www.energy.gov/science/office-science-funding/office-science-budget)

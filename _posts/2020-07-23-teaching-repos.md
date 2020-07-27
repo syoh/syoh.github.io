@@ -1,6 +1,7 @@
 ---
 title: Repositories for Private Development of Public Course Content
 toc: true
+tags: [teaching, computing, github]
 ---
 For course material development, some content such as homework solutions need to be kept private (at least temporarily). This note explains how two repositories can be used in concert to simplify private development of public course content.
 
