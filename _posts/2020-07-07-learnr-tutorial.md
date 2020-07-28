@@ -1,5 +1,5 @@
 ---
-title: Interactive Tutorial with `learnr` and Binder
+title: Interactive Tutorial with learnr and Binder
 toc: true
 gallery:
 - url: https://syoh.org/assets/images/learnr.gif
