@@ -2,8 +2,8 @@
 title: Interactive Tutorial with `learnr` and Binder
 toc: true
 gallery:
-- url: /assets/images/learnr.gif
-  image_path: /assets/images/learnr.gif
+- url: https://syoh.org/assets/images/learnr.gif
+  image_path: https://syoh.org/assets/images/learnr.gif
   alt: "learnr tutorial on Binder"
   title: "learnr tutorial running on Binder"
 tags: [teaching, jupyter, docker, binder, computing]
