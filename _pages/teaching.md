@@ -7,6 +7,7 @@ toc: true
 header:
     overlay_image: /assets/images/sunset.jpg
     overlay_filter: 0.2
+    caption: "[North Campus Open Space](https://goo.gl/maps/1dX6nHinMrh3sP8Z9) &copy; 2020 `syoh.org` All Rights Reserved"
 ---
 
 
