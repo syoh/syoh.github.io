@@ -11,7 +11,7 @@
   pages = {280--288},
   publisher = {{PMLR}},
   address = {{Fort Lauderdale, FL, USA}},
-  url = {http://papers.nips.cc/paper/5576-optimization-methods-for-sparse-pseudo-likelihood-graphical-model-selection.pdf},
+  url = {http://proceedings.mlr.press/v54/ali17a.html},
   abstract = {We introduce PseudoNet, a new pseudolikelihood-based estimator of the inverse covariance matrix, that has a number of useful statistical and computational properties. We show, through detailed experiments with synthetic and also real-world finance as well as wind power data, that PseudoNet outperforms related methods in terms of estimation error and support recovery, making it well-suited for use in a downstream application, where obtaining low estimation error can be important. We also show, under regularity conditions, that PseudoNet is consistent. Our proof assumes the existence of accurate estimates of the diagonal entries of the underlying inverse covariance matrix; we additionally provide a two-step method to obtain these estimates, even in a high-dimensional setting, going beyond the proofs for related methods. Unlike other pseudolikelihood-based methods, we also show that PseudoNet does not saturate, i.e., in high dimensions, there is no hard limit on the number of nonzero entries in the PseudoNet estimate. We present a fast algorithm as well as screening rules that make computing the PseudoNet estimate over a range of tuning parameters tractable.},
   software = {https://bitbucket.org/sangoh/gconcordopt/src/default/},
   keywords = {undirected graphical model},
@@ -42,6 +42,7 @@
   pages = {756--765},
   publisher = {{PMLR}},
   address = {{Online}},
+  url = {http://proceedings.mlr.press/v108/cisneros20a.html},
   abstract = {Building on a recent framework for distributionally robust optimization, we consider inverse covariance matrix estimation for multivariate data. A novel notion of Wasserstein ambiguity set is provided that is specifically tailored to this problem, leading to a tractable class of regularized estimators. Penalized likelihood estimators for Gaussian data, specifically the graphical lasso estimator, are special cases. Consequently, a direction connection is made between the radius of the Wasserstein ambiguity and the regularization parameter, so that the level of robustness of the estimator is shown to correspond to the level of confidence with which the ambiguity set contains a distribution with the population covariance. A unique feature of the formulation is that the radius can be expressed in closed-form as a function of the ordinary sample covariance matrix. Taking advantage of this finding, a simple algorithm is developed to determine a regularization parameter for graphical lasso, using only the bootstrapped sample covariance matrices, rendering computationally expensive repeated evaluation of the graphical lasso algorithm unnecessary. Alternatively, the distributionally robust formulation can also quantify the robustness of the corresponding estimator if one uses an off-the-shelf method such as cross-validation. Finally, a numerical study is performed to analyze the robustness of the proposed method relative to other automated tuning procedures used in practice.},
   file = {G\:\\My Drive\\references\\Conference Paper\\Cisneros-Velarde2020 - Distributionally Robust Formulation and Model Selection for the Graphical Lasso.pdf}
 }
@@ -86,6 +87,7 @@
   publisher = {{Wiley}},
   doi = {10.1111/rssb.12088},
   abstract = {Sparse high dimensional graphical model selection is a topic of much interest in modern day statistics. A popular approach is to apply l1-penalties to either parametric likelihoods, or regularized regression/pseudolikelihoods, with the latter having the distinct advantage that they do not explicitly assume Gaussianity. As none of the popular methods proposed for solving pseudolikelihood-based objective functions have provable convergence guarantees, it is not clear whether corresponding estimators exist or are even computable, or if they actually yield correct partial correlation graphs. We propose a new pseudolikelihood-based graphical model selection method that aims to overcome some of the shortcomings of current methods, but at the same time retain all their respective strengths. In particular, we introduce a novel framework that leads to a convex formulation of the partial covariance regression graph problem, resulting in an objective function comprised of quadratic forms. The objective is then optimized via a co-ordinatewise approach. The specific functional form of the objective function facilitates rigorous convergence analysis leading to convergence guarantees; an important property that cannot be established by using standard results, when the dimension is larger than the sample size, as is often the case in high dimensional applications. These convergence guarantees ensure that estimators are well defined under very general conditions and are always computable. In addition, the approach yields estimators that have good large sample properties and also respect symmetry. Furthermore, application to simulated and real data, timing comparisons and numerical convergence is demonstrated. We also present a novel unifying framework that places all graphical pseudolikelihood methods as special cases of a more general formulation, leading to important insights.},
+  software = {https://cran.r-project.org/web/packages/gconcord/},
   keywords = {undirected graphical model},
   file = {G\:\\My Drive\\references\\Journal Article\\Khare2014 - A convex pseudolikelihood framework for high dimensional partial correlation.pdf}
 }
@@ -114,6 +116,8 @@
   publisher = {{Institute of Electrical and Electronics Engineers (IEEE)}},
   doi = {10.1109/ipdps.2016.117},
   abstract = {Multiplication of a sparse matrix with a dense matrix is a building block of an increasing number of applications in many areas such as machine learning and graph algorithms. However, most previous work on parallel matrix multiplication considered only both dense or both sparse matrix operands. This paper analyzes the communication lower bounds and compares the communication costs of various classic parallel algorithms in the context of sparse-dense matrix-matrix multiplication. We also present new communication-avoiding algorithms based on a 1D decomposition, called 1.5D, which - while suboptimal in dense-dense and sparse-sparse cases - outperform the 2D and 3D variants both theoretically and in practice for sparse-dense multiplication. Our analysis separates one-time costs from per iteration costs in an iterative machine learning context. Experiments demonstrate speedups up to 100x over a baseline 3D SUMMA implementation and show parallel scaling over 10 thousand cores.},
+  software = {https://bitbucket.org/penpornk/spdm3-hpconcord},
+  annotation = {tex:url: http://kaewgb.com/spdm3/index.html},
   file = {G\:\\My Drive\\references\\Conference Paper\\Koanantakool2016 - Communication-Avoiding Parallel Sparse-Dense Matrix-Matrix Multiplication.pdf}
 }
 
@@ -129,7 +133,9 @@
   pages = {1376--1386},
   publisher = {{PMLR}},
   address = {{Playa Blanca, Lanzarote, Canary Islands}},
+  url = {http://proceedings.mlr.press/v84/koanantakool18a.html},
   abstract = {Across a variety of scientific disciplines, sparse inverse covariance estimation is a popular tool for capturing the underlying dependency relationships in multivariate data. Unfortunately, most estimators are not scalable enough to handle the sizes of modern high-dimensional data sets (often on the order of terabytes), and assume Gaussian samples. To address these deficiencies, we introduce HP-CONCORD, a highly scalable optimization method for estimating a sparse inverse covariance matrix based on a regularized pseudolikelihood framework, without assuming Gaussianity. Our parallel proximal gradient method uses a novel communication-avoiding linear algebra algorithm and runs across a multi-node cluster with up to 1k nodes (24k cores), achieving parallel scalability on problems with up to {$\approx$}819 billion parameters (1.28 million dimensions); even on a single node, HP-CONCORD demonstrates scalability, outperforming a state-of-the-art method. We also use HP-CONCORD to estimate the underlying dependency structure of the brain from fMRI data, and use the result to identify functional regions automatically. The results show good agreement with a clustering from the neuroscience literature.},
+  software = {http://kaewgb.com/hp-concord/},
   file = {G\:\\My Drive\\references\\Conference Paper\\Koanantakool2018 - Communication-Avoiding Optimization Methods for Distributed Massive-Scale.pdf}
 }
 
@@ -169,6 +175,7 @@
   year = {2014},
   pages = {667--675},
   publisher = {{Curran Associates, Inc.}},
+  url = {http://papers.nips.cc/paper/5576-optimization-methods-for-sparse-pseudo-likelihood-graphical-model-selection.pdf},
   abstract = {Sparse high dimensional graphical model selection is a popular topic in contemporary machine learning. To this end, various useful approaches have been proposed in the context of {$\mathscr{l}$}1 penalized estimation in the Gaussian framework. Though many of these approaches are demonstrably scalable and have leveraged recent advances in convex optimization, they still depend on the Gaussian functional form. To address this gap, a convex pseudo-likelihood based partial correlation graph estimation method (CONCORD) has been recently proposed. This method uses cyclic coordinate-wise minimization of a regression based pseudo-likelihood, and has been shown to have robust model selection properties in comparison with the Gaussian approach. In direct contrast to the parallel work in the Gaussian setting however, this new convex pseudo-likelihood framework has not leveraged the extensive array of methods that have been proposed in the machine learning literature for convex optimization. In this paper, we address this crucial gap by proposing two proximal gradient methods (CONCORD-ISTA and CONCORD-FISTA) for performing {$\mathscr{l}$}1-regularized inverse covariance matrix estimation in the pseudo-likelihood framework. We present timing comparisons with coordinate-wise minimization and demonstrate that our approach yields tremendous pay offs for {$\mathscr{l}$}1-penalized partial correlation graph estimation outside the Gaussian setting, thus yielding the fastest and most scalable approach for such problems. We undertake a theoretical analysis of our approach and rigorously demonstrate convergence, and also derive rates thereof.},
   keywords = {undirected graphical model},
   file = {G\:\\My Drive\\references\\Book Section\\Oh2014 - Optimization Methods for Sparse Pseudo-Likelihood Graphical Model Selection.pdf}
@@ -211,18 +218,19 @@
   file = {G\:\\My Drive\\references\\Journal Article\\Wu2001 - Asymmetric Beams in Cosmic Microwave Background Anisotropy Experiments.pdf}
 }
 
-@article{Zapata2019,
+@article{Zapata2021a,
   title = {Partial {{Separability}} and {{Functional Graphical Models}} for {{Multivariate Gaussian Processes}}},
-  author = {Zapata, Javier and Oh, Sang-Yun and Petersen, Alexander},
-  year = {2019},
+  author = {Zapata, J and Oh, S Y and Petersen, A},
+  year = {2021},
   month = oct,
-  journal = {Submitted},
-  eprint = {1910.03134v2},
-  eprinttype = {arxiv},
-  abstract = {The covariance structure of multivariate functional data can be highly complex, especially if the multivariate dimension is large, making extension of statistical methods for standard multivariate data to the functional data setting quite challenging. For example, Gaussian graphical models have recently been extended to the setting of multivariate functional data by applying multivariate methods to the coefficients of truncated basis expansions. However, a key difficulty compared to multivariate data is that the covariance operator is compact, and thus not invertible. The methodology in this paper addresses the general problem of covariance modeling for multivariate functional data, and functional Gaussian graphical models in particular. As a first step, a new notion of separability for multivariate functional data is proposed, termed partial separability, leading to a novel Karhunen-Lo\`eve-type expansion for such data. Next, the partial separability structure is shown to be particularly useful in order to provide a well-defined Gaussian graphical model that can be identified with a sequence of finite-dimensional graphical models, each of fixed dimension. This motivates a simple and efficient estimation procedure through application of the joint graphical lasso. Empirical performance of the method for graphical model estimation is assessed through simulation and analysis of functional brain connectivity during a motor task.},
-  archiveprefix = {arXiv},
-  keywords = {graphical models},
-  file = {G\:\\My Drive\\references\\Journal Article\\Zapata2019 - Partial Separability and Functional Graphical Models for Multivariate Gaussian.pdf}
+  journal = {Biometrika},
+  pages = {asab046},
+  issn = {0006-3444, 1464-3510},
+  doi = {10.1093/biomet/asab046},
+  abstract = {Abstract             The covariance structure of multivariate functional data can be highly complex, especially if the multivariate dimension is large, making extensions of statistical methods for standard multivariate data to the functional data setting challenging. For example, Gaussian graphical models have recently been extended to the setting of multivariate functional data by applying multivariate methods to the coefficients of truncated basis expansions. However, a key difficulty compared to multivariate data is that the covariance operator is compact, and thus not invertible. The methodology in this paper addresses the general problem of covariance modelling for multivariate functional data, and functional Gaussian graphical models in particular. As a first step, a new notion of separability for the covariance operator of multivariate functional data is proposed, termed partial separability, leading to a novel Karhunen\textendash Lo\`eve-type expansion for such data. Next, the partial separability structure is shown to be particularly useful in order to provide a well-defined functional Gaussian graphical model that can be identified with a sequence of finite-dimensional graphical models, each of identical fixed dimension. This motivates a simple and efficient estimation procedure through application of the joint graphical lasso. Empirical performance of the method for graphical model estimation is assessed through simulation and analysis of functional brain connectivity during a motor task.},
+  langid = {english},
+  software = {https://github.com/javzapata/fgm},
+  file = {G\:\\My Drive\\references\\Journal Article\\Zapata2021 - Partial Separability and Functional Graphical Models for Multivariate Gaussian.pdf}
 }
 
 
