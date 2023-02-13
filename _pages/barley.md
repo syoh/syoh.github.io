@@ -13,19 +13,20 @@ import pandas as pd
 
 df = pd.read_csv("https://syoh.org/assets/files/barley.csv").[[1]]
 
-variety_totals = df.[[2]].[[3]]
-variety_minimum = variety_totals.[[4]].[[5]]
-variety_totals.loc[variety_minimum.values.flatten()]
+site_variety_avg= df.[[2]].[[3]]
+site_maximum = site_variety_avg.[[4]].[[5]]
+site_variety_avg.loc[site_maximum.values.flatten()]
 ```
 
 ## Snippet List
 
-i. `groupby('variety')`  
+i. `groupby('site')`
 
-ii. `apply(lambda x: x.idxmin())`  
+ii. `agg({'yield':'mean'})`
 
-iii. `set_index(['site', 'variety'])`  
+iii. `groupby(['site', 'variety'])`
 
-iv. `agg({'yield':'sum'})`  
+iv. `set_index(['site', 'variety'])`
 
-v. `groupby(['site', 'variety'])`  
+v. `apply(lambda x: x.idxmax())`
+
