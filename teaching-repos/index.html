@@ -1,0 +1,795 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Repositories for Private Development of Public Course Content - Sang-Yun Oh</title>
+<meta name="description" content="For course material development, some content such as homework solutions need to be kept private (at least temporarily). This note explains how two repositories can be used in concert to simplify private development of public course content.">
+
+
+  <meta name="author" content="Sang-Yun Oh">
+  
+  <meta property="article:author" content="Sang-Yun Oh">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Sang-Yun Oh">
+<meta property="og:title" content="Repositories for Private Development of Public Course Content">
+<meta property="og:url" content="https://syoh.org/teaching-repos/">
+
+
+  <meta property="og:description" content="For course material development, some content such as homework solutions need to be kept private (at least temporarily). This note explains how two repositories can be used in concert to simplify private development of public course content.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-07-23T00:00:00+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://syoh.org/teaching-repos/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "",
+      "url": "https://syoh.org/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="{"hide"=>nil}" type="application/atom+xml" rel="alternate" title="Sang-Yun Oh Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--posts">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+           
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/research/">Research</a>
+            </li><li class="masthead__menu-item">
+              <a href="/teaching/">Teaching</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Repositories for Private Development of Public Course Content</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://syoh.org/">
+        <img src="/assets/images/bio-photo.jpg" alt="Sang-Yun Oh" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://syoh.org/" itemprop="url">Sang-Yun Oh</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="mailto:syoh-at-ucsb-dot-edu" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://scholar.google.com/citations?user=1z6dv-MAAAAJ" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-google" aria-hidden="true"></i><span class="label">Google Scholar</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/syoh" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">Repositories for Private Development of Public Course Content</h1>
+    
+    <p>For course material development, some content such as homework solutions need to be kept private (at least temporarily). This note explains how two repositories can be used in concert to simplify private development of public course content.</p>
+
+<p>The material on this page has been adopted and expanded from <a href="https://github.community/t5/How-to-use-Git-and-GitHub/Project-setup-question-with-public-and-private-quot-branches/m-p/26789/highlight/true#M7600">this posting</a></p>
+
+<h1 id="initial-setup">Initial setup</h1>
+
+<h2 id="remote-public-and-private-repositories">Remote Public and Private Repositories</h2>
+
+<p>Suppose you have two Github repositories:</p>
+<ul>
+  <li>Public repo is at <code class="language-plaintext highlighter-rouge">https://github.com/username/public-repo.git</code></li>
+  <li>Private repo is at <code class="language-plaintext highlighter-rouge">https://github.com/username/private-repo.git</code></li>
+</ul>
+
+<p>The public repo will be open to the students, whereas the private repo will be used for development and testing (shared with TAs etc.)</p>
+
+<h2 id="local-repository-with-public-and-private-remotes">Local Repository with Public and Private Remotes</h2>
+
+<p>Create a local repository and set target repositories</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> ~/local-repo <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ~/local-repo
+git init
+git remote add public https://github.com/username/public-repo.git
+git remote add private https://github.com/username/private-repo.git
+</code></pre></div></div>
+
+<p>Add first public file in <code class="language-plaintext highlighter-rouge">master</code> branch and push to <code class="language-plaintext highlighter-rouge">public-repo</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cd ~/local-repo &amp;&amp; git checkout master</span>
+
+<span class="nb">echo</span> <span class="s2">"README"</span> <span class="o">&gt;&gt;</span> README.md
+git add README.md
+git commit <span class="nt">-m</span><span class="s2">"first commit"</span>
+
+git push public master
+git push private master
+</code></pre></div></div>
+<p>Now, <code class="language-plaintext highlighter-rouge">public-repo/master</code> and <code class="language-plaintext highlighter-rouge">private-repo/master</code> on Github are identical.</p>
+
+<p>Create a local development branch: <code class="language-plaintext highlighter-rouge">private-branch</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cd ~/local-repo &amp;&amp; git checkout master</span>
+git checkout <span class="nt">-b</span> private-branch
+
+<span class="nb">echo</span> <span class="s2">"handout"</span> <span class="o">&gt;</span> homework1-handout.md
+<span class="nb">echo</span> <span class="s2">"solutions"</span> <span class="o">&gt;</span> homework1-solution.md
+git add homework1-handout.md homework1-solution.md 
+git commit <span class="nt">-m</span><span class="s2">"private development"</span>
+
+git push <span class="nt">-u</span> private private-branch
+</code></pre></div></div>
+<p>Here <code class="language-plaintext highlighter-rouge">private-branch</code> branch syncs with <code class="language-plaintext highlighter-rouge">private-repo/private-branch</code> (remote branch name defaults to <code class="language-plaintext highlighter-rouge">private-branch</code>)</p>
+
+<h1 id="publishing-content-to-public-repository">Publishing content to public repository</h1>
+
+<p><strong>Do not <code class="language-plaintext highlighter-rouge">merge</code> but <code class="language-plaintext highlighter-rouge">checkout</code></strong> relevant files into <code class="language-plaintext highlighter-rouge">public-repo/master</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cd ~/public-repo &amp;&amp; git checkout master</span>
+
+git checkout private-branch homework1-handout.md
+git add homework1-handout.md
+git commit <span class="nt">-m</span><span class="s2">"release homework1"</span>
+git push
+</code></pre></div></div>
+<p>Note the line <code class="language-plaintext highlighter-rouge">git checkout private-branch homework1-handout.md</code> overwrites (or creates) <code class="language-plaintext highlighter-rouge">homework1-handout.md</code> in <code class="language-plaintext highlighter-rouge">public-repo/master</code>.</p>
+
+<h2 id="using-different-remote-vs-local-branch-names-optional">Using different remote vs. local branch names (Optional)</h2>
+
+<p>A local branch (you would like to keep private) can have any name. For example, create a local branch named <code class="language-plaintext highlighter-rouge">new-branch</code> to sync with <code class="language-plaintext highlighter-rouge">private-repo/private-branch</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cd ~/public-repo &amp;&amp; git checkout master</span>
+
+git checkout <span class="nt">--orphan</span> new-branch
+git pull private private-branch
+<span class="c"># make some changes</span>
+git push private new-branch:private-branch
+</code></pre></div></div>
+<p>Any changes in <code class="language-plaintext highlighter-rouge">new-branch</code> branch will now push to <code class="language-plaintext highlighter-rouge">private-repo/private-branch</code>.</p>
+
+<p><em>Note: upstream tracking doesn’t seem to stick with ‘-u’.</em></p>
+
+<h2 id="setting-default-push-behavior-optional">Setting default <code class="language-plaintext highlighter-rouge">push</code> behavior (Optional)</h2>
+
+<p>To me, the default behaviors of <code class="language-plaintext highlighter-rouge">git pull</code> and <code class="language-plaintext highlighter-rouge">git push</code> are strange. I kept on using <code class="language-plaintext highlighter-rouge">git push [remote] [branch]</code> above because even setting upstream with <code class="language-plaintext highlighter-rouge">-u</code> does not behave as I expect it to.</p>
+
+<p>However, configuring <a href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushdefault"><code class="language-plaintext highlighter-rouge">git config push.default upstream</code></a> seems much more intuitive to me.</p>
+
+<p>Also, forcing checkout seems to simplify the process of cloning <code class="language-plaintext highlighter-rouge">private/feature</code> to a new local branch and sets the upstream:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config push.default upstream <span class="nt">--local</span>
+git checkout <span class="nt">-f</span> <span class="nt">-b</span> new-branch private/feature
+<span class="nb">echo</span> <span class="s2">"fix problems"</span> <span class="o">&gt;&gt;</span> homework1-handout.md
+git add <span class="nt">-u</span>
+git commit <span class="nt">-m</span><span class="s2">"fix homework1-handout"</span>
+git push <span class="nt">-v</span>
+</code></pre></div></div>
+<p>Above will push our local <code class="language-plaintext highlighter-rouge">new-branch</code> to <code class="language-plaintext highlighter-rouge">private/feature</code> branch.</p>
+
+<h1 id="duplicating-dual-remote-setup">Duplicating Dual Remote Setup</h1>
+
+<p>Clone public repository and add private repository as remote:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/username/public-repo.git ~/public-repo
+<span class="nb">cd</span> ~/public-repo
+
+<span class="c"># set local master branch to track public master branch</span>
+git remote <span class="nb">rm </span>origin <span class="c"># to explicitly differentiate public vs private repos</span>
+git remote add public https://github.com/username/public-repo.git
+git push <span class="nt">-u</span> public master 
+</code></pre></div></div>
+
+<p>Sync a local <code class="language-plaintext highlighter-rouge">private-branch</code> with <code class="language-plaintext highlighter-rouge">private-repo/private-branch</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cd ~/public-repo &amp;&amp; git checkout master</span>
+
+git checkout <span class="nt">--orphan</span> private-branch 
+
+git remote add private https://github.com/username/private-repo.git
+git pull private private-branch
+
+<span class="nb">echo</span> <span class="s2">"add solutions"</span> <span class="o">&gt;&gt;</span> homework1-solution.md
+git add <span class="nt">-u</span>
+git commit <span class="nt">-m</span><span class="s2">"modify homework 1 solution"</span>
+
+git push <span class="nt">-u</span> private private-branch
+</code></pre></div></div>
+
+<p>Check pushing is setup properly with a dry run: <code class="language-plaintext highlighter-rouge">git push -n -v</code></p>
+
+<h1 id="adding-branches">Adding Branches</h1>
+
+<p>If multiple people are working on this repository, multiple branches need to be created.
+To create additional branches to the private repository, simply create a branch from <code class="language-plaintext highlighter-rouge">private-branch</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cd ~/public-repo &amp;&amp; git checkout private-branch</span>
+
+git checkout <span class="nt">-b</span> new-private-branch
+<span class="nb">echo</span> <span class="s2">"newfile"</span> <span class="o">&gt;</span> newfile.txt
+git add newfile.txt
+git commit <span class="nt">-m</span><span class="s1">'adding a new file'</span>
+
+git remote add private new-private-branch
+git push <span class="nt">--set-upstream</span> private new-private-branch
+</code></pre></div></div>
+
+
+
+<!--
+<ul class="taxonomy__index">
+  
+  
+    <li>
+      <a href="#2020">
+        <strong>2020</strong> <span class="taxonomy__count">3</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="#2019">
+        <strong>2019</strong> <span class="taxonomy__count">1</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="#2018">
+        <strong>2018</strong> <span class="taxonomy__count">1</span>
+      </a>
+    </li>
+  
+</ul>
+-->
+
+
+
+
+  <section id="2020" class="taxonomy__section">
+    <h2 class="archive__subtitle">2020</h2>
+    <div class="entries-list">
+      
+        
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/teaching-repos/" rel="permalink">Repositories for Private Development of Public Course Content
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">For course material development, some content such as homework solutions need to be kept private (at least temporarily). This note explains how two repositor...</p>
+  </article>
+</div>
+
+      
+        
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/learnr-tutorial/" rel="permalink">Interactive Tutorial with learnr and Binder
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Recently, a colleague pointed out that they would like to host R tutorial created with learnr package for their students. In this post, I describe a way to h...</p>
+  </article>
+</div>
+
+      
+        
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/doe-budget-request-to-congress/" rel="permalink">HP-CONCORD in FY 2021 Budget Request to Congress
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">In FY 2021 ASCR budget requests to the Congress, HP-CONCORD appeared as one of the program accomplishments. This is a part of the full budget request made by...</p>
+  </article>
+</div>
+
+      
+    </div>
+    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
+  </section>
+
+  <section id="2019" class="taxonomy__section">
+    <h2 class="archive__subtitle">2019</h2>
+    <div class="entries-list">
+      
+        
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/central-coast-data-science-partnership/" rel="permalink">Central Coast Data Science Partnership
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">We received an NSF grant to train a new generation of data scientists through Central Coast Data Science Partnership! I feel privileged to be a part of the U...</p>
+  </article>
+</div>
+
+      
+    </div>
+    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
+  </section>
+
+  <section id="2018" class="taxonomy__section">
+    <h2 class="archive__subtitle">2018</h2>
+    <div class="entries-list">
+      
+        
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/HP-CONCORD/" rel="permalink">HP-CONCORD Paves the Way for Scalable Machine Learning in HPC
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Read the article about HP-CONCORD on NERSC Science News
+</p>
+  </article>
+</div>
+
+      
+    </div>
+    <a href="#page-title" class="back-to-top">Back to top &uarr;</a>
+  </section>
+
+
+  </div>
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    
+      <li><a href="{"hide"=>nil}"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Sang-Yun Oh. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+<script>addBackToTop({
+    diameter: 56,
+    backgroundColor: 'rgb(255, 82, 82)',
+    textColor: '#fff'
+})</script>
+
+
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-429812-4']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

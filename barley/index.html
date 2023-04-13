@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Sang-Yun Oh</title>
+<!-- begin _includes/seo.html --><title>Barley - Sang-Yun Oh</title>
 <meta name="description" content="">
 
 
@@ -20,16 +20,14 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Sang-Yun Oh">
-<meta property="og:title" content="Sang-Yun Oh">
-<meta property="og:url" content="https://syoh.org/">
+<meta property="og:title" content="Barley">
+<meta property="og:url" content="https://syoh.org/barley/">
 
 
   <meta property="og:description" content="">
 
 
 
-  <meta property="og:image" content="https://syoh.org/assets/images/path-banner.jpg">
-
 
 
 
@@ -43,7 +41,7 @@
   
 
 
-<link rel="canonical" href="https://syoh.org/">
+<link rel="canonical" href="https://syoh.org/barley/">
 
 
 
@@ -94,7 +92,7 @@
 
   </head>
 
-  <body class="layout--single wide">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -142,30 +140,36 @@
 
     <div class="initial-content">
       
+
+
+
+
   
+    
 
 
 
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
 
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        <li class="current">Barley</li>
+      
+    
+  </ol>
+</nav>
 
-
-
-<div class="page__hero"
-  style=" background-image: url('');"
->
   
-    <img src="/assets/images/path-banner.jpg" alt="" class="page__hero-image">
-  
-  
-    <span class="page__hero-caption">Somewhere in Oregon © 2020 <code class="language-plaintext highlighter-rouge">syoh.org</code> All Rights Reserved
-</span>
-  
-</div>
-
-
-
-
-
 
 
 <div id="main" role="main">
@@ -290,7 +294,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    
+    <meta itemprop="headline" content="Barley">
     
     
     
@@ -298,7 +302,10 @@
     <div class="page__inner-wrap">
       
         <header>
-          
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://syoh.org/barley/" class="u-url" itemprop="url">Barley
+</a>
+          </h1>
           
 
 
@@ -307,11 +314,29 @@
 
       <section class="page__content e-content" itemprop="text">
         
-        <p>I am an associate professor in the <a href="https://www.pstat.ucsb.edu">Department of Statistics & Applied Probability</a> at the <a href="https://ucsb.edu">University of California, Santa Barbara</a>, and a faculty scientist in <a href="https://crd.lbl.gov/departments/data-science-and-technology/data-analytics-and-visualization">Computational Research Division</a> at <a href="https://www.lbl.gov">Lawrence Berkeley Lab</a>. My CV can be found <a href="/assets/files/CV.pdf">here</a></p>
+        <h2 id="starter-code">Starter Code</h2>
 
-<p>My research interests include learning underlying relationships in large scale data. I work on topics in inference, scalable computation, and high-performance software implementation for graphical models, and I enjoy applying my research to genomic, financial, and neuroscience data.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 
-<p>My office is at South Hall, Room 5514 (<a href="https://goo.gl/maps/92n9iTrecfB91McQ8">Google Map</a>).</p>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"https://syoh.org/assets/files/barley.csv"</span><span class="p">).[[</span><span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">site_variety_avg</span><span class="o">=</span> <span class="n">df</span><span class="p">.[[</span><span class="mi">2</span><span class="p">]].[[</span><span class="mi">3</span><span class="p">]]</span>
+<span class="n">site_maximum</span> <span class="o">=</span> <span class="n">site_variety_avg</span><span class="p">.[[</span><span class="mi">4</span><span class="p">]].[[</span><span class="mi">5</span><span class="p">]]</span>
+<span class="n">site_variety_avg</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">site_maximum</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">flatten</span><span class="p">()]</span>
+</code></pre></div></div>
+
+<h2 id="snippet-list">Snippet List</h2>
+
+<p>i. <code class="language-plaintext highlighter-rouge">groupby('site')</code></p>
+
+<p>ii. <code class="language-plaintext highlighter-rouge">agg({'yield':'mean'})</code></p>
+
+<p>iii. <code class="language-plaintext highlighter-rouge">groupby(['site', 'variety'])</code></p>
+
+<p>iv. <code class="language-plaintext highlighter-rouge">set_index(['site', 'variety'])</code></p>
+
+<p>v. <code class="language-plaintext highlighter-rouge">apply(lambda x: x.idxmax())</code></p>
+
 
         
       </section>

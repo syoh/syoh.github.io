@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://syoh.org/feed.xml" rel="self" type="application/atom+xml" /><link href="https://syoh.org/" rel="alternate" type="text/html" /><updated>2023-04-13T20:50:38+00:00</updated><id>https://syoh.org/feed.xml</id><title type="html">Sang-Yun Oh</title><subtitle></subtitle><author><name>Sang-Yun Oh</name></author><entry><title type="html">Repositories for Private Development of Public Course Content</title><link href="https://syoh.org/teaching-repos/" rel="alternate" type="text/html" title="Repositories for Private Development of Public Course Content" /><published>2020-07-23T00:00:00+00:00</published><updated>2020-07-23T00:00:00+00:00</updated><id>https://syoh.org/teaching-repos</id><content type="html" xml:base="https://syoh.org/teaching-repos/"><![CDATA[<p>For course material development, some content such as homework solutions need to be kept private (at least temporarily). This note explains how two repositories can be used in concert to simplify private development of public course content.</p>
+
+<p>The material on this page has been adopted and expanded from <a href="https://github.community/t5/How-to-use-Git-and-GitHub/Project-setup-question-with-public-and-private-quot-branches/m-p/26789/highlight/true#M7600">this posting</a></p>
+
+<h1 id="initial-setup">Initial setup</h1>
+
+<h2 id="remote-public-and-private-repositories">Remote Public and Private Repositories</h2>
+
+<p>Suppose you have two Github repositories:</p>
+<ul>
+  <li>Public repo is at <code class="language-plaintext highlighter-rouge">https://github.com/username/public-repo.git</code></li>
+  <li>Private repo is at <code class="language-plaintext highlighter-rouge">https://github.com/username/private-repo.git</code></li>
+</ul>
+
+<p>The public repo will be open to the students, whereas the private repo will be used for development and testing (shared with TAs etc.)</p>
+
+<h2 id="local-repository-with-public-and-private-remotes">Local Repository with Public and Private Remotes</h2>
+
+<p>Create a local repository and set target repositories</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> ~/local-repo <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ~/local-repo
+git init
+git remote add public https://github.com/username/public-repo.git
+git remote add private https://github.com/username/private-repo.git
+</code></pre></div></div>
+
+<p>Add first public file in <code class="language-plaintext highlighter-rouge">master</code> branch and push to <code class="language-plaintext highlighter-rouge">public-repo</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cd ~/local-repo &amp;&amp; git checkout master</span>
+
+<span class="nb">echo</span> <span class="s2">"README"</span> <span class="o">&gt;&gt;</span> README.md
+git add README.md
+git commit <span class="nt">-m</span><span class="s2">"first commit"</span>
+
+git push public master
+git push private master
+</code></pre></div></div>
+<p>Now, <code class="language-plaintext highlighter-rouge">public-repo/master</code> and <code class="language-plaintext highlighter-rouge">private-repo/master</code> on Github are identical.</p>
+
+<p>Create a local development branch: <code class="language-plaintext highlighter-rouge">private-branch</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cd ~/local-repo &amp;&amp; git checkout master</span>
+git checkout <span class="nt">-b</span> private-branch
+
+<span class="nb">echo</span> <span class="s2">"handout"</span> <span class="o">&gt;</span> homework1-handout.md
+<span class="nb">echo</span> <span class="s2">"solutions"</span> <span class="o">&gt;</span> homework1-solution.md
+git add homework1-handout.md homework1-solution.md 
+git commit <span class="nt">-m</span><span class="s2">"private development"</span>
+
+git push <span class="nt">-u</span> private private-branch
+</code></pre></div></div>
+<p>Here <code class="language-plaintext highlighter-rouge">private-branch</code> branch syncs with <code class="language-plaintext highlighter-rouge">private-repo/private-branch</code> (remote branch name defaults to <code class="language-plaintext highlighter-rouge">private-branch</code>)</p>
+
+<h1 id="publishing-content-to-public-repository">Publishing content to public repository</h1>
+
+<p><strong>Do not <code class="language-plaintext highlighter-rouge">merge</code> but <code class="language-plaintext highlighter-rouge">checkout</code></strong> relevant files into <code class="language-plaintext highlighter-rouge">public-repo/master</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cd ~/public-repo &amp;&amp; git checkout master</span>
+
+git checkout private-branch homework1-handout.md
+git add homework1-handout.md
+git commit <span class="nt">-m</span><span class="s2">"release homework1"</span>
+git push
+</code></pre></div></div>
+<p>Note the line <code class="language-plaintext highlighter-rouge">git checkout private-branch homework1-handout.md</code> overwrites (or creates) <code class="language-plaintext highlighter-rouge">homework1-handout.md</code> in <code class="language-plaintext highlighter-rouge">public-repo/master</code>.</p>
+
+<h2 id="using-different-remote-vs-local-branch-names-optional">Using different remote vs. local branch names (Optional)</h2>
+
+<p>A local branch (you would like to keep private) can have any name. For example, create a local branch named <code class="language-plaintext highlighter-rouge">new-branch</code> to sync with <code class="language-plaintext highlighter-rouge">private-repo/private-branch</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cd ~/public-repo &amp;&amp; git checkout master</span>
+
+git checkout <span class="nt">--orphan</span> new-branch
+git pull private private-branch
+<span class="c"># make some changes</span>
+git push private new-branch:private-branch
+</code></pre></div></div>
+<p>Any changes in <code class="language-plaintext highlighter-rouge">new-branch</code> branch will now push to <code class="language-plaintext highlighter-rouge">private-repo/private-branch</code>.</p>
+
+<p><em>Note: upstream tracking doesn’t seem to stick with ‘-u’.</em></p>
+
+<h2 id="setting-default-push-behavior-optional">Setting default <code class="language-plaintext highlighter-rouge">push</code> behavior (Optional)</h2>
+
+<p>To me, the default behaviors of <code class="language-plaintext highlighter-rouge">git pull</code> and <code class="language-plaintext highlighter-rouge">git push</code> are strange. I kept on using <code class="language-plaintext highlighter-rouge">git push [remote] [branch]</code> above because even setting upstream with <code class="language-plaintext highlighter-rouge">-u</code> does not behave as I expect it to.</p>
+
+<p>However, configuring <a href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushdefault"><code class="language-plaintext highlighter-rouge">git config push.default upstream</code></a> seems much more intuitive to me.</p>
+
+<p>Also, forcing checkout seems to simplify the process of cloning <code class="language-plaintext highlighter-rouge">private/feature</code> to a new local branch and sets the upstream:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config push.default upstream <span class="nt">--local</span>
+git checkout <span class="nt">-f</span> <span class="nt">-b</span> new-branch private/feature
+<span class="nb">echo</span> <span class="s2">"fix problems"</span> <span class="o">&gt;&gt;</span> homework1-handout.md
+git add <span class="nt">-u</span>
+git commit <span class="nt">-m</span><span class="s2">"fix homework1-handout"</span>
+git push <span class="nt">-v</span>
+</code></pre></div></div>
+<p>Above will push our local <code class="language-plaintext highlighter-rouge">new-branch</code> to <code class="language-plaintext highlighter-rouge">private/feature</code> branch.</p>
+
+<h1 id="duplicating-dual-remote-setup">Duplicating Dual Remote Setup</h1>
+
+<p>Clone public repository and add private repository as remote:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/username/public-repo.git ~/public-repo
+<span class="nb">cd</span> ~/public-repo
+
+<span class="c"># set local master branch to track public master branch</span>
+git remote <span class="nb">rm </span>origin <span class="c"># to explicitly differentiate public vs private repos</span>
+git remote add public https://github.com/username/public-repo.git
+git push <span class="nt">-u</span> public master 
+</code></pre></div></div>
+
+<p>Sync a local <code class="language-plaintext highlighter-rouge">private-branch</code> with <code class="language-plaintext highlighter-rouge">private-repo/private-branch</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cd ~/public-repo &amp;&amp; git checkout master</span>
+
+git checkout <span class="nt">--orphan</span> private-branch 
+
+git remote add private https://github.com/username/private-repo.git
+git pull private private-branch
+
+<span class="nb">echo</span> <span class="s2">"add solutions"</span> <span class="o">&gt;&gt;</span> homework1-solution.md
+git add <span class="nt">-u</span>
+git commit <span class="nt">-m</span><span class="s2">"modify homework 1 solution"</span>
+
+git push <span class="nt">-u</span> private private-branch
+</code></pre></div></div>
+
+<p>Check pushing is setup properly with a dry run: <code class="language-plaintext highlighter-rouge">git push -n -v</code></p>
+
+<h1 id="adding-branches">Adding Branches</h1>
+
+<p>If multiple people are working on this repository, multiple branches need to be created.
+To create additional branches to the private repository, simply create a branch from <code class="language-plaintext highlighter-rouge">private-branch</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># cd ~/public-repo &amp;&amp; git checkout private-branch</span>
+
+git checkout <span class="nt">-b</span> new-private-branch
+<span class="nb">echo</span> <span class="s2">"newfile"</span> <span class="o">&gt;</span> newfile.txt
+git add newfile.txt
+git commit <span class="nt">-m</span><span class="s1">'adding a new file'</span>
+
+git remote add private new-private-branch
+git push <span class="nt">--set-upstream</span> private new-private-branch
+</code></pre></div></div>]]></content><author><name>Sang-Yun Oh</name></author><category term="teaching" /><category term="computing" /><category term="github" /><summary type="html"><![CDATA[For course material development, some content such as homework solutions need to be kept private (at least temporarily). This note explains how two repositories can be used in concert to simplify private development of public course content.]]></summary></entry><entry><title type="html">Interactive Tutorial with learnr and Binder</title><link href="https://syoh.org/learnr-tutorial/" rel="alternate" type="text/html" title="Interactive Tutorial with learnr and Binder" /><published>2020-07-07T00:00:00+00:00</published><updated>2020-07-07T00:00:00+00:00</updated><id>https://syoh.org/learnr-tutorial</id><content type="html" xml:base="https://syoh.org/learnr-tutorial/"><![CDATA[<p>Recently, a colleague pointed out that they would like to host R tutorial created with <code class="language-plaintext highlighter-rouge">learnr</code> package for their students. In this post, I describe a way to host the tutorials that is suitable in a workshop-like setting.</p>
+
+<h1 id="creating-interactive-tutorial-with-learnr-package">Creating Interactive Tutorial with <code class="language-plaintext highlighter-rouge">learnr</code> Package</h1>
+
+<p><a href="https://rstudio.github.io/learnr/"><code class="language-plaintext highlighter-rouge">learnr</code></a> is a package that creates a specialized Shiny apps for interactive tutorials. The difficulty in making use of <code class="language-plaintext highlighter-rouge">learnr</code> in practice is that someone needs to host the Shiny apps. Immediate possibilities are</p>
+
+<ul>
+  <li>Host them on <a href="https://www.shinyapps.io">shinyapps.io</a>. The free tier seems to be limited to 5 applications and 25 active hours per month.</li>
+  <li>Host them on a central Shiny server the instructor installs. With cloud computing this is possible without a physical machine; however, this option is still time consuming and requires expertise.</li>
+  <li>Student installs Rstudio and runs the tutorials. This can be hard depending on the audience.</li>
+</ul>
+
+<p>First and second options require instructor’s resource and time, and third option need students to invest time to setup the environment and run the tutorials themselves.</p>
+
+<h1 id="hosting-interactive-tutorial-with-binder">“Hosting” Interactive Tutorial with Binder</h1>
+
+<p>Binder is a flexible platform to reproduce a computational environment. You can read more about Binder on <a href="https://the-turing-way.netlify.app/reproducible-research/renv/renv-binder.html">The Turing Way</a> (an online book for research computing that I find super useful).</p>
+
+<p>For example, Binder can start a Rstudio session with cloned contents of a GitHub repository, and start a Shiny app for you.</p>
+
+<figure class=" ">
+  
+    
+      <a href="https://syoh.org/assets/images/learnr.gif" title="learnr tutorial running on Binder">
+          <img src="https://syoh.org/assets/images/learnr.gif" alt="learnr tutorial on Binder" />
+      </a>
+    
+  
+  
+</figure>
+
+<h1 id="template-code-repository">Template Code Repository</h1>
+
+<p>You can find two interactive tutorial examples in this <a href="https://github.com/syoh/learnr-tutorial"><code class="language-plaintext highlighter-rouge">learnr</code> template Github repository</a>. You can clone the template repository and start creating your own <code class="language-plaintext highlighter-rouge">learnr</code> tutorials that will run on Binder!</p>
+
+<p>Below are the two Binder links from the template repository:</p>
+
+<ul>
+  <li>shiny/test1: <a href="http://mybinder.org/v2/gh/syoh/learnr-tutorial/master?urlpath=shiny/test1/"><img src="http://mybinder.org/badge_logo.svg" alt="Binder" /></a></li>
+  <li>shiny/test2: <a href="http://mybinder.org/v2/gh/syoh/learnr-tutorial/master?urlpath=shiny/test2/"><img src="http://mybinder.org/badge_logo.svg" alt="Binder" /></a></li>
+</ul>]]></content><author><name>Sang-Yun Oh</name></author><category term="teaching" /><category term="jupyter" /><category term="docker" /><category term="binder" /><category term="computing" /><summary type="html"><![CDATA[Recently, a colleague pointed out that they would like to host R tutorial created with learnr package for their students. In this post, I describe a way to host the tutorials that is suitable in a workshop-like setting.]]></summary></entry><entry><title type="html">HP-CONCORD in FY 2021 Budget Request to Congress</title><link href="https://syoh.org/doe-budget-request-to-congress/" rel="alternate" type="text/html" title="HP-CONCORD in FY 2021 Budget Request to Congress" /><published>2020-02-14T00:00:00+00:00</published><updated>2020-02-14T00:00:00+00:00</updated><id>https://syoh.org/doe-budget-request-to-congress</id><content type="html" xml:base="https://syoh.org/doe-budget-request-to-congress/"><![CDATA[<p>In <a href="https://www.energy.gov/sites/prod/files/2020/06/f75/fy-2021-sc-ascr-cong-budget.pdf">FY 2021 ASCR budget requests to the Congress</a>, HP-CONCORD appeared as one of the program accomplishments. This is a part of the full budget request made by the <a href="https://www.energy.gov/science/office-science-funding/office-science-budget">Office of Science at Department of Energy</a></p>
+
+<p>The following is from page 27:</p>
+
+<blockquote>
+  <p><em>HP-CONCORD Enables Machine Learning in HPC at Unprecedented Scale.</em><br />
+Understanding the interactions between millions of variables such as how a disease may be caused by a subset of the human genes is among the most challenging problems in data-driven science. A powerful machine learning algorithm called CONCORD can identify these relationships however until recently it could only be applied to modest-sized data sets. Researchers from LBNL supported by SciDAC along with their collaborators from Google Brain, University of California Santa Barbara and Carnegie Mellon University developed a high-performance computing version of the algorithm called HP-CONCORD. Using NERSC, they then demonstrated this parallel algorithm on an enormous set of data from the Human Connectome Project, which computed estimates for about 4 billion parameters, and an even larger demonstration problem with over 800 billion parameters. The HP-CONCORD team used functional magnetic resonance imaging data to estimate the underlying conditional dependency structure of the brain and then used the resulting estimate to automatically identify functional regions of the brain. The researchers expect that many other science areas will benefit from HP-CONCORD in the future: In biology it can be used to reconstruct gene regulatory networks, or in environmental sciences it can help in estimating temperature-to-environmental-proxy relationships. HP-CONCORD may also be useful for hypothesis generation in exploratory data analysis to guide further experimental study.</p>
+</blockquote>
+
+<p>There were a lot of budget cuts, but <a href="https://cra.org/govaffairs/blog/2020/02/doe-sc-fy-2021-pbr/">Computing Research Association</a> reports that ASCR faired reasonably well.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">FY19</th>
+      <th style="text-align: center">FY20</th>
+      <th style="text-align: center">FY21 PBR</th>
+      <th style="text-align: center">$ CHANGE</th>
+      <th>% CHANGE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">DOE SC Total</td>
+      <td style="text-align: center">$6.59B</td>
+      <td style="text-align: center">$7.00B</td>
+      <td style="text-align: center">$5.84B</td>
+      <td style="text-align: center">-$1.16B</td>
+      <td>-17%</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">ASCR</td>
+      <td style="text-align: center">$936M</td>
+      <td style="text-align: center">$980M</td>
+      <td style="text-align: center">$988M</td>
+      <td style="text-align: center">+$8M</td>
+      <td>+1.0%</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">ARPA-E</td>
+      <td style="text-align: center">$366M</td>
+      <td style="text-align: center">$425M</td>
+      <td style="text-align: center">$0</td>
+      <td style="text-align: center">-$425M</td>
+      <td>-100%</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name>Sang-Yun Oh</name></author><category term="research" /><category term="news" /><summary type="html"><![CDATA[In FY 2021 ASCR budget requests to the Congress, HP-CONCORD appeared as one of the program accomplishments. This is a part of the full budget request made by the Office of Science at Department of Energy]]></summary></entry><entry><title type="html">Central Coast Data Science Partnership</title><link href="https://syoh.org/central-coast-data-science-partnership/" rel="alternate" type="text/html" title="Central Coast Data Science Partnership" /><published>2019-09-19T00:00:00+00:00</published><updated>2019-09-19T00:00:00+00:00</updated><id>https://syoh.org/central-coast-data-science-partnership</id><content type="html" xml:base="https://syoh.org/central-coast-data-science-partnership/"><![CDATA[<p>We received an <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1924205&amp;HistoricalAwards=false">NSF grant</a> to train a new generation of data scientists through <a href="https://centralcoastdatascience.org">Central Coast Data Science Partnership</a>! I feel privileged to be a part of the <a href="https://datascience.ucsb.edu">UCSB Data Science Initiative</a>.</p>
+
+<p>Update (April 2, 2020): <a href="https://dailynexus.com/2020-04-02/ucsb-receives-nsf-grant-to-train-a-new-generation-of-data-scientists/">UCSB Receives NSF Grant To Train a New Generation of Data Scientists</a> (Daily Nexus)</p>]]></content><author><name>Sang-Yun Oh</name></author><category term="data science" /><summary type="html"><![CDATA[We received an NSF grant to train a new generation of data scientists through Central Coast Data Science Partnership! I feel privileged to be a part of the UCSB Data Science Initiative.]]></summary></entry><entry><title type="html">HP-CONCORD Paves the Way for Scalable Machine Learning in HPC</title><link href="https://syoh.org/HP-CONCORD/" rel="alternate" type="text/html" title="HP-CONCORD Paves the Way for Scalable Machine Learning in HPC" /><published>2018-10-01T00:00:00+00:00</published><updated>2018-10-01T00:00:00+00:00</updated><id>https://syoh.org/HP-CONCORD</id><content type="html" xml:base="https://syoh.org/HP-CONCORD/"><![CDATA[<p>Read the article about <a href="http://proceedings.mlr.press/v84/koanantakool18a.html">HP-CONCORD</a> on <a href="https://www.nersc.gov/news-publications/nersc-news/science-news/2018/hp-concord-paves-the-way-for-scalable-machine-learning-in-hpc/">NERSC Science News</a></p>]]></content><author><name>Sang-Yun Oh</name></author><category term="research" /><category term="news" /><summary type="html"><![CDATA[Read the article about HP-CONCORD on NERSC Science News]]></summary></entry></feed>
